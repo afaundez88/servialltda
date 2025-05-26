@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVIAL LIMITADA - Soluciones Industriales Integrales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Un color de fondo muy suave, casi blanco */
+            color: #333;
+        }
+        /* Estilos generales para secciones */
+        .section-padding {
+            @apply py-16 px-6 lg:px-8;
+        }
+        .section-title {
+            @apply text-4xl font-extrabold text-center text-gray-800 mb-12 relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #4a90e2; /* Un azul más suave y profesional */
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        /* Estilo para los botones de navegación */
+        .nav-button {
+            @apply px-5 py-2 rounded-full text-white font-semibold transition-all duration-300 ease-in-out;
+            background-color: #4a90e2; /* Azul más suave */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .nav-button:hover {
+            background-color: #357ABD; /* Un tono un poco más oscuro al pasar el mouse */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        /* Estilo para las tarjetas de contenido */
+        .content-card {
+            @apply bg-white p-8 rounded-2xl shadow-xl mb-8 transform transition-transform duration-300 hover:scale-105;
+        }
+        /* Estilo para listas */
+        .list-style {
+            @apply list-disc pl-5 space-y-2 text-gray-700;
+        }
+        /* Estilos específicos para el carrusel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 1.5rem; /* rounded-3xl */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            height: 400px; /* Altura fija para las imágenes del carrusel */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-center: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.4); /* Botones de carrusel más sutiles */
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 9999px; /* rounded-full */
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .carousel-button.prev {
+            left: 1rem;
+        }
+        .carousel-button.next {
+            right: 1rem;
+        }
+        /* Estilos para cards de servicios/clientes */
+        .service-card, .client-logo {
+            @apply bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center transition-transform duration-300 hover:scale-105;
+        }
+        .service-card i {
+            @apply text-5xl text-blue-600 mb-4; /* Mantener un azul vibrante para iconos */
+        }
+        .client-logo img {
+            @apply max-h-20 w-auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-blue-800 text-white p-6 shadow-lg fixed w-full z-50">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="#" class="text-4xl font-extrabold mb-4 md:mb-0 tracking-tight">SERVIAL LIMITADA</a>
+            <nav>
+                <ul class="flex flex-wrap justify-center gap-4">
+                    <li><a href="#quienes-somos" class="nav-button">Quiénes Somos</a></li>
+                    <li><a href="#servicios" class="nav-button">Servicios</a></li>
+                    <li><a href="#industrias-clientes" class="nav-button">Clientes</a></li>
+                    <li><a href="#contacto" class="nav-button">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative h-screen flex items-center justify-center text-white overflow-hidden" style="background: linear-gradient(to right, #2c5282, #63b3ed);">
+        <img src="portada.jpg" alt="Soldadura" class="absolute inset-0 w-full h-full object-cover opacity-60 z-0">
+        <div class="absolute inset-0 z-0">
+            <div class="carousel-container h-full">
+                <div class="carousel-slides h-full" id="carousel-slides">
+                    <div class="carousel-slide" style="background-image: url('soldadura.jpg');">
+                        <h2 class="text-5xl md:text-6xl font-bold text-center px-4">Innovación y Calidad en Cada Proyecto</h2>
+                    </div>
+                    <div class="carousel-slide" style="background-image: url('servicios.jpg');">
+                        <h2 class="text-5xl md:text-6xl font-bold text-center px-4">Tecnología de Punta a su Servicio</h2>
+                    </div>
+                    <div class="carousel-slide" style="background-image: url('jaulas.jpg');">
+                        <h2 class="text-5xl md:text-6xl font-bold text-center px-4">Profesionales Comprometidos con su Éxito</h2>
+                    </div>
+                </div>
+                <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </div>
+        <div class="relative z-10 text-center p-6 bg-black bg-opacity-50 rounded-xl max-w-3xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 drop-shadow-lg">SERVIAL LIMITADA</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">
+                Apoyando el desarrollo y mejoramiento productivo de la Industria del Salmón y más allá, con experiencia y soluciones integrales.
+            </p>
+            <a href="#servicios" class="bg-yellow-400 text-blue-900 px-8 py-4 rounded-full text-xl font-bold uppercase hover:bg-yellow-500 transition-colors duration-300 shadow-lg">
+                Descubre Nuestros Servicios
+            </a>
+        </div>
+    </section>
+
+    <main class="container mx-auto mt-8">
+
+        <section id="quienes-somos" class="section-padding">
+            <h2 class="section-title">Quiénes Somos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div class="content-card">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        SERVIAL LIMITADA es una empresa con sede en la X Región de Chile, fundada con la misión de ser un pilar fundamental en el desarrollo y mejoramiento productivo de la Industria del Salmón. Nuestra visión se extiende a diversas industrias, donde aplicamos nuestra vasta experiencia para generar valor.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Nuestros socios poseen una trayectoria de más de 20 años en el sector, lo que nos permite ofrecer un conocimiento profundo y soluciones efectivas. Buscamos la sinergia de esta experiencia para abordar los desafíos de nuestros clientes con ideas innovadoras y un enfoque en la mejora continua.
+                    </p>
+                </div>
+                <div class="content-card flex items-center justify-center">
+                    <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Equipo+SERVIAL" alt="" class="rounded-xl shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <section id="nuestra-propuesta-valor" class="section-padding bg-gray-50">
+            <h2 class="section-title">Nuestra Propuesta de Valor</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="content-card text-center">
+                    <i class="fas fa-chart-line text-blue-600 text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Experiencia Comprobada</h3>
+                    <p class="text-gray-700">Más de 20 años de trayectoria en la Industria del Salmón y otros sectores clave, garantizando un profundo conocimiento y soluciones probadas.</p>
+                </div>
+                <div class="content-card text-center">
+                    <i class="fas fa-lightbulb text-blue-600 text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Enfoque Innovador</h3>
+                    <p class="text-gray-700">Nos focalizamos en las necesidades del cliente, aportando ideas innovadoras y siendo parte activa de la solución para cada desafío.</p>
+                </div>
+                <div class="content-card text-center">
+                    <i class="fas fa-award text-blue-600 text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Calidad Certificada</h3>
+                    <p class="text-gray-700">Todos nuestros trabajos son certificados por las empresas y por terceros, asegurando los más altos estándares de calidad.</p>
+                </div>
+                <div class="content-card text-center">
+                    <i class="fas fa-users text-blue-600 text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Equipo Especializado</h3>
+                    <p class="text-gray-700">Contamos con profesionales y operarios altamente calificados en diversas áreas, listos para cubrir cualquier necesidad.</p>
+                </div>
+                <div class="content-card text-center">
+                    <i class="fas fa-cogs text-blue-600 text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Maquinaria de Vanguardia</h3>
+                    <p class="text-gray-700">Equipos y maquinaria a la altura de los requerimientos más exigentes, para soluciones inmediatas y eficientes.</p>
+                </div>
+                <div class="content-card text-center">
+                    <i class="fas fa-handshake text-blue-600 text-6xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-800">Garantía y Soporte</h3>
+                    <p class="text-gray-700">Ofrecemos garantías sólidas y soporte continuo para asegurar la durabilidad y el rendimiento óptimo de nuestros proyectos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="section-padding">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-3xl mx-auto">
+                SERVIAL LIMITADA ofrece una amplia gama de servicios especializados, diseñados para satisfacer las necesidades específicas de diversas industrias. Nuestra estructura nos permite brindar apoyo integral y soluciones a medida.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="content-card col-span-1 md:col-span-2 lg:col-span-1">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Especialidades Destacadas</h3>
+                    <ul class="list-style text-gray-700">
+                        <li><i class="fas fa-industry text-blue-500 mr-2"></i> Fabricación cinta Transportadora (mineras y Rectas).</li>
+                        <li><i class="fas fa-filter text-blue-500 mr-2"></i> Reparación de Filtros Rotatorios.</li>
+                        <li><i class="fas fa-pallet text-blue-500 mr-2"></i> Fabricación y Reparación Plataformas de Ensilaje.</li>
+                        <li><i class="fas fa-snowflake text-blue-500 mr-2"></i> Fabricación de Quillas Enfriadoras de Blowers.</li>
+                        <li><i class="fas fa-thermometer-half text-blue-500 mr-2"></i> Fabricación y Montaje de Circuitos de Refrigeración (Freon y Amoniaco).</li>
+                        <li><i class="fas fa-fire text-blue-500 mr-2"></i> Fabricación y Reparación Calderas Planta de Alimento Peces.</li>
+                        <li><i class="fas fa-pump-medical text-blue-500 mr-2"></i> Confección Sala de Bombas.</li>
+                        <li><i class="fas fa-dumpster text-blue-500 mr-2"></i> Confección Tolvas de Trituración fábricas de Cal.</li>
+                        <li><i class="fas fa-water text-blue-500 mr-2"></i> Confección Ductos de Agua Potable.</li>
+                        <li><i class="fas fa-flask text-blue-500 mr-2"></i> Fabricación Ductos Inoxidables.</li>
+                        <li><i class="fas fa-box text-blue-500 mr-2"></i> Fabricación de Estanques.</li>
+                    </ul>
+                </div>
+
+                <div class="content-card col-span-1 md:col-span-2 lg:col-span-2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Nuestras Capacidades Integrales</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <ul class="list-style text-gray-700">
+                            <li><i class="fas fa-fish text-blue-500 mr-2"></i> Líneas de Alimentación Peces</li>
+                            <li><i class="fas fa-stream text-blue-500 mr-2"></i> Líneas de Proceso</li>
+                            <li><i class="fas fa-seedling text-blue-500 mr-2"></i> Sistemas de Ensilaje</li>
+                            <li><i class="fas fa-temperature-low text-blue-500 mr-2"></i> Plantas de Fríos</li>
+                        </ul>
+                        <ul class="list-style text-gray-700">
+                            <li><i class="fas fa-fire-alt text-blue-500 mr-2"></i> Reparación Caldera</li>
+                            <li><i class="fas fa-truck-loading text-blue-500 mr-2"></i> Tolvas de Trituración</li>
+                            <li><i class="fas fa-bolt text-blue-500 mr-2"></i> Hidroeléctrica</li>
+                            <li><i class="fas fa-conveyor-belt text-blue-500 mr-2"></i> Fabricación Cintas Transportadores</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="industrias-clientes" class="section-padding bg-gray-100">
+            <h2 class="section-title">Nuestras Industrias y Clientes</h2>
+            <p class="text-center text-lg text-gray-700 mb-10 max-w-3xl mx-auto">
+                Hemos tenido el privilegio de servir a una amplia gama de industrias, construyendo relaciones de confianza con clientes líderes en sus respectivos sectores.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="content-card">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Industrias que Atendemos</h3>
+                    <ul class="list-style text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-y-2">
+                        <li><i class="fas fa-hard-hat text-blue-500 mr-2"></i> Minería</li>
+                        <li><i class="fas fa-tint text-blue-500 mr-2"></i> Agua Potable</li>
+                        <li><i class="fas fa-fish text-blue-500 mr-2"></i> Salmonicultura</li>
+                        <li><i class="fas fa-recycle text-blue-500 mr-2"></i> Residuos Orgánicos</li>
+                        <li><i class="fas fa-ice-cream text-blue-500 mr-2"></i> Frigoríficos</li>
+                        <li><i class="fas fa-cheese text-blue-500 mr-2"></i> Láctea</li>
+                        <li><i class="fas fa-industry text-blue-500 mr-2"></i> Otras industrias</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Nuestros Valiosos Clientes</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=Los+Fiordos" alt="">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=Saam" alt="">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=Transantartic" alt="">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=SEIDOGKOPPERS" alt="">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=Frigorifico+PM" alt="">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=Daniso" alt="">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=Pacific+Star" alt="">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=Colun" alt="">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=Nestle" alt="">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://placehold.co/150x80/e2e8f0/4a90e2?text=Essal" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="section-padding bg-blue-700 text-white">
+            <h2 class="section-title text-white">Contáctenos</h2>
+            <p class="text-center text-lg mb-10 max-w-3xl mx-auto">
+                Estamos listos para escuchar sus necesidades y ofrecerle las mejores soluciones industriales. No dude en ponerse en contacto con nosotros.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div class="content-card bg-white text-gray-800 p-8">
+                    <h3 class="text-2xl font-bold mb-4">Información de Contacto</h3>
+                    <div class="space-y-4 text-lg">
+                        <p><i class="fas fa-user-tie text-blue-600 mr-3"></i> <strong class="font-semibold">Luis Miguel Alocilla Huanel</strong></p>
+                        <p><i class="fas fa-phone-alt text-blue-600 mr-3"></i> <strong class="font-semibold">Teléfono:</strong> <a href="tel:+56975792446" class="text-blue-600 hover:underline">975792446</a></p>
+                        <p><i class="fas fa-envelope text-blue-600 mr-3"></i> <strong class="font-semibold">Email:</strong> <a href="mailto:Servialltda.2008@Gmail.com" class="text-blue-600 hover:underline">Servialltda.2008@Gmail.com</a></p>
+                        <p class="pl-7"><a href="mailto:Luisalocilla.1991@Hotmail.com" class="text-blue-600 hover:underline">Luisalocilla.1991@Hotmail.com</a></p>
+                    </div>
+                </div>
+                <div class="content-card bg-white p-0 overflow-hidden">
+                    <img src="https://placehold.co/600x400/e0e0e0/333333?text=Mapa+o+Formulario+de+Contacto" alt="" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-white p-8 mt-12 text-center rounded-t-2xl shadow-inner">
+        <p class="text-lg">&copy; 2025 SERVIAL LIMITADA. Todos los derechos reservados.</p>
+        <p class="text-sm mt-2">Diseñado con <i class="fas fa-heart text-red-500"></i> para soluciones industriales.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.getElementById('carousel-slides');
+        const totalSlides = slides.children.length;
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            }
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Auto-avance del carrusel
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000); // Cambia de imagen cada 5 segundos
+    </script>
+</body>
+</html>
